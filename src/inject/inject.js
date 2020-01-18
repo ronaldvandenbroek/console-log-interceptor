@@ -6,6 +6,8 @@ console.log = function () {
     // Log the intercepted console.log() as normal
     _log.apply(this, arguments);
 
+    fetch('http://localhost:8888/' + arguments[0]);
+
     // Add code to process the intercepted log here
     _log("Intercept code");
 }
