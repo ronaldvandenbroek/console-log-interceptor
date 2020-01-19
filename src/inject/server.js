@@ -23,7 +23,7 @@ const port = process.argv[2] || 8888;
 
 // Route that receives a POST request to /log
 app.post('/log', function (req, res) {
-    const body = req.body;
+    const body = req.body['0'];
     console.log(body);
     res.status(200).send();
 })
