@@ -1,14 +1,36 @@
-var http = require("http"),
-    url = require("url")
-port = process.argv[2] || 8888;
+// Imports
+const express = require('express')
+const cors = require('cors');
 
-http.createServer(function (request, response) {
+// Setup
+const app = express()
+app.use(express.json())
+app.use(cors());
+var whitelist = ['http://localhost:4200']
+var corsOptions = {
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    }
+}
+app.use(cors(corsOptions));
 
-    var uri = url.parse(request.url).pathname;
-    console.log(uri);
-    response.writeHead(200);
-    response.end();
-    return;
-}).listen(parseInt(port, 10));
+// Config
+const port = process.argv[2] || 8888;
 
-console.log("Static file server running at\n  => http://localhost:" + port + "/\nCTRL + C to shutdown");
+// Route that receives a POST request to /log
+app.post('/log', function (req, res) {
+    const body = req.body;
+    console.log(body);
+    //res.set('Content-Type', 'text/plain')
+    //res.send(`You sent: ${body} to Express`)
+})
+app.listen(port, function (err) {
+    if (err) {
+        throw err
+    }
+    console.log(`Server started on port ${port}`)
+})

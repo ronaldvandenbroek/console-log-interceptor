@@ -1,13 +1,26 @@
+// Monitor url
+var monitorUrl = 'http://localhost:8888/log';
+// Log as normal
+var logOriginal = true;
+
 // Backup the default console.log()
 _log = console.log.bind(console);
-
 // Override the default console.log()
 console.log = function () {
-    // Log the intercepted console.log() as normal
-    _log.apply(this, arguments);
+    // If enabled log the intercepted console.log() as normal
+    if (logOriginal) {
+        _log.apply(this, arguments);
+    }
 
-    fetch('http://localhost:8888/' + arguments[0]);
-
-    // Add code to process the intercepted log here
-    _log("Intercept code");
+    // Code processing the intercepted log
+    fetch(monitorUrl,
+        {
+            method: "post",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(arguments)
+        })
+        .then(res => res.text())
+        .then(res => _log(res));
 }
