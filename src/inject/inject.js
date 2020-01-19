@@ -21,6 +21,4 @@ console.log = function () {
             },
             body: JSON.stringify(arguments)
         })
-        .then(res => res.text())
-        .then(res => _log(res));
 }

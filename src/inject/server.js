@@ -25,8 +25,7 @@ const port = process.argv[2] || 8888;
 app.post('/log', function (req, res) {
     const body = req.body;
     console.log(body);
-    //res.set('Content-Type', 'text/plain')
-    //res.send(`You sent: ${body} to Express`)
+    res.status(200).send();
 })
 app.listen(port, function (err) {
     if (err) {
