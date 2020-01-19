@@ -6,23 +6,23 @@ class Server {
 
     constructor() {
         this.server = express();
-        this.server.use(express.json())
+        this.server.use(express.json());
         this.configureCORS();
         this.mountRoutes();
     }
 
     private configureCORS(): void {
         this.server.use(cors());
-        var whitelist = ['http://localhost:4200']
-        var corsOptions = {
+        const whitelist = ['http://localhost:4200'];
+        const corsOptions = {
             origin: function (origin, callback) {
                 if (whitelist.indexOf(origin) !== -1) {
-                    callback(null, true)
+                    callback(null, true);
                 } else {
-                    callback(new Error('Not allowed by CORS'))
+                    callback(new Error('Not allowed by CORS'));
                 }
-            }
-        }
+            },
+        };
         this.server.use(cors(corsOptions));
     }
 
@@ -31,8 +31,8 @@ class Server {
             const body = request.body['0'];
             console.log(body);
             response.status(200).send();
-        })
+        });
     }
 }
 
-export default new Server().server
+export default new Server().server;

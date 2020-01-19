@@ -5,7 +5,10 @@
   "main": "index.ts",
   "scripts": {
     "start": "node server.js",
-    "build": "tsc"
+    "build": "tsc",
+    "changelint": "npx eslint --init",
+    "runlint": "eslint src --ext ts",
+    "runlintfix": "eslint src --ext ts --fix"
   },
   "author": "Ronald van den Broek",
   "license": "MIT",
@@ -15,10 +18,16 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "typescript": "^3.7.5",
+    "typescript-eslint-parser": "^22.0.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.6",
-    "@types/express": "^4.17.2"
+    "@types/express": "^4.17.2",
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
+    "@typescript-eslint/parser": "^2.16.0",
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0"
   }
 }
