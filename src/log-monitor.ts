@@ -1,6 +1,9 @@
 import express = require('express');
 import cors = require('cors');
 
+/**
+ * Callback interface used to return the intercepted log entry
+ */
 export interface ICallback {
   (log: string): void;
 }
