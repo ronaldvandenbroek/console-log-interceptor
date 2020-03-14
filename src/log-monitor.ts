@@ -2,9 +2,9 @@ import express = require('express');
 import cors = require('cors');
 
 /**
- * Callback interface used to return the intercepted log entry
+ * Callback interface used to return the intercepted log entry.
  */
-export interface ICallback {
+export interface IMonitorCallback {
   (log: string): void;
 }
 
@@ -12,40 +12,45 @@ export interface ICallback {
  * Server class used to recieve intercepted logs.
  */
 export class LogMonitor {
-  private logMonitor;
+  private logMonitor: express.Application;
 
   /**
  * Setup the express server.
  */
-  constructor(callback: ICallback, whitelist: string[], port: string) {
-    this.logMonitor = express();
-    this.logMonitor.use(express.json());
+  constructor(callback: IMonitorCallback, whitelist: string[], port: number) {
+    this.setupExpress(port);
     this.configureCORS(whitelist);
     this.mountRoutes(callback);
-    this.logMonitor.listen(port)
     callback(`Server started on port ${port}`)
+  }
+
+  /**
+  * Setup the the express server.
+  */
+  private setupExpress(port: number) {
+    this.logMonitor = express();
+    this.logMonitor.use(express.json());
+    this.logMonitor.listen(port)
   }
 
   /**
   * Configure the CORS of the express server.
   */
   private configureCORS(whitelist: string[]): void {
-    const corsOptions = {
-      origin: function(origin, callback) {
-        if (whitelist.indexOf(origin) !== -1) {
-          callback(null, true);
-        } else {
-          callback(new Error('Not allowed by CORS'));
-        }
-      },
-    };
-    this.logMonitor.use(cors(corsOptions));
+    if (whitelist) {
+      const corsOptions: cors.CorsOptions = {
+        origin: whitelist,
+        methods: "POST",
+      };
+
+      this.logMonitor.use(cors(corsOptions));
+    }
   }
 
   /**
   * Configuring the routes the express server can be called on.
   */
-  private mountRoutes(callback: ICallback): void {
+  private mountRoutes(callback: IMonitorCallback): void {
     this.logMonitor.post('/log', function(request, response) {
       const body = request.body['0'];
       callback(body);
