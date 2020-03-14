@@ -1,7 +1,7 @@
 # console-log-interceptor
 Intercept console.logs from a website and send it to a seperate logger
 
-## log-inject
+## inject.js
 Code used to override the console.log() function in the browser.
 This code can be used by copy-pasting it in the browser console of the site you want to intercept the logs from.
  
