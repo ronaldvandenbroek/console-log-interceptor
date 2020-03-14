@@ -1,28 +1,32 @@
 import express = require('express');
 import cors = require('cors');
 
+export interface ICallback {
+  (log: string): void;
+}
+
 /**
  * Server class used to recieve intercepted logs.
  */
-class LogMonitor {
-  public logMonitor;
+export class LogMonitor {
+  private logMonitor;
 
   /**
  * Setup the express server.
  */
-  constructor() {
+  constructor(callback: ICallback, whitelist: string[], port: string) {
     this.logMonitor = express();
     this.logMonitor.use(express.json());
-    this.configureCORS();
-    this.mountRoutes();
+    this.configureCORS(whitelist);
+    this.mountRoutes(callback);
+    this.logMonitor.listen(port)
+    callback(`Server started on port ${port}`)
   }
 
   /**
   * Configure the CORS of the express server.
   */
-  private configureCORS(): void {
-    this.logMonitor.use(cors());
-    const whitelist = ['http://localhost:4200'];
+  private configureCORS(whitelist: string[]): void {
     const corsOptions = {
       origin: function(origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
@@ -38,13 +42,11 @@ class LogMonitor {
   /**
   * Configuring the routes the express server can be called on.
   */
-  private mountRoutes(): void {
+  private mountRoutes(callback: ICallback): void {
     this.logMonitor.post('/log', function(request, response) {
       const body = request.body['0'];
-      console.log(body);
+      callback(body);
       response.status(200).send();
     });
   }
 }
-
-export default new LogMonitor().logMonitor;

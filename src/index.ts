@@ -1,11 +1,10 @@
-import logMonitor from './log-monitor';
+import { ICallback, LogMonitor } from './log-monitor';
 
-console.log(`Starting LogServer`);
-const port = process.env.PORT || 8888;
+const port: string = process.env.PORT || '8888';
+const whitelist: string[] = ['http://localhost:4200'];
 
-logMonitor.listen(port, function(error) {
-  if (error) {
-    throw error;
-  }
-  console.log(`Server started on port ${port}`);
-});
+let callback: ICallback = (log: string): void => {
+  console.log(log);
+}
+
+new LogMonitor(callback, whitelist, port);
