@@ -4,8 +4,9 @@
   "description": "Server side code to monitor console.log intercepts",
   "main": "index.ts",
   "scripts": {
-    "start": "node server.js",
+    "start": "node dist/server.js",
     "build": "tsc",
+    "buildstart": "tsc && node dist/index.js",
     "changelint": "npx eslint --init",
     "runlint": "eslint src --ext ts",
     "runlintfix": "eslint src --ext ts --fix"
@@ -19,8 +20,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "typescript": "^3.7.5",
-    "typescript-eslint-parser": "^22.0.0"
+    "typescript": "^3.7.5"
   },
   "devDependencies": {
     "@types/cors": "^2.8.6",

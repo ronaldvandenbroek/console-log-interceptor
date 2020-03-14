@@ -1,8 +1,9 @@
-import server from './Server';
+import logServer from './log-server';
 
+console.log(`Starting LogServer`);
 const port = process.env.PORT || 8888;
 
-server.listen(port, function(error) {
+logServer.listen(port, function(error) {
   if (error) {
     throw error;
   }

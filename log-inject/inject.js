@@ -1,6 +1,6 @@
-// Monitor url
+// Url of the monitor server.
 var monitorUrl = 'http://localhost:8888/log';
-// Log as normal
+// Check if you want the browser to still log as normal or skip that step.
 var logOriginal = true;
 
 // Backup the default console.log()

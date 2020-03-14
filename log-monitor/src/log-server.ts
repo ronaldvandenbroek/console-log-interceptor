@@ -1,18 +1,18 @@
-const express = require('express');
-const cors = require('cors');
+import express = require('express');
+import cors = require('cors');
 
 /**
  * Server class used to recieve intercepted logs.
  */
-class Server {
-  public server;
+class LogServer {
+  public logServer;
 
   /**
  * Setup the express server.
  */
   constructor() {
-    this.server = express();
-    this.server.use(express.json());
+    this.logServer = express();
+    this.logServer.use(express.json());
     this.configureCORS();
     this.mountRoutes();
   }
@@ -21,7 +21,7 @@ class Server {
   * Configure the CORS of the express server.
   */
   private configureCORS(): void {
-    this.server.use(cors());
+    this.logServer.use(cors());
     const whitelist = ['http://localhost:4200'];
     const corsOptions = {
       origin: function(origin, callback) {
@@ -32,14 +32,14 @@ class Server {
         }
       },
     };
-    this.server.use(cors(corsOptions));
+    this.logServer.use(cors(corsOptions));
   }
 
   /**
   * Configuring the routes the express server can be called on.
   */
   private mountRoutes(): void {
-    this.server.post('/log', function(request, response) {
+    this.logServer.post('/log', function(request, response) {
       const body = request.body['0'];
       console.log(body);
       response.status(200).send();
@@ -47,4 +47,4 @@ class Server {
   }
 }
 
-export default new Server().server;
+export default new LogServer().logServer;
