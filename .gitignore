@@ -44,3 +44,4 @@ e2e/*.map
 .history
 
 # End of https://www.gitignore.io/api/angular,visualstudiocode
+*.code-workspace
