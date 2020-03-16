@@ -1,4 +1,6 @@
 # console-log-interceptor
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fronaldvandenbroek%2Fconsole-log-interceptor.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fronaldvandenbroek%2Fconsole-log-interceptor?ref=badge_shield)
+
 Intercept console.logs from a website and send it to a seperate logger
 
 ## inject.js
@@ -21,3 +23,7 @@ Or used as a package within another application.
 
 
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fronaldvandenbroek%2Fconsole-log-interceptor.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fronaldvandenbroek%2Fconsole-log-interceptor?ref=badge_large)
