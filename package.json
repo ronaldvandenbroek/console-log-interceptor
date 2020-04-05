@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "description": "Server side code to monitor console.log intercepts",
   "main": "index.ts",
+  "author": "Ronald van den Broek",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ronaldvandenbroek/console-log-interceptor.git"
+  },
   "scripts": {
     "start": "node dist/server.js",
     "build": "tsc",
@@ -11,11 +17,11 @@
     "runlint": "eslint src --ext ts",
     "runlintfix": "eslint src --ext ts --fix"
   },
-  "author": "Ronald van den Broek",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/ronaldvandenbroek/console-log-interceptor.git"
+  "husky": {
+    "hooks": {
+      "pre-commit": "eslint src --ext ts",
+      "pre-push": "eslint src --ext ts"
+    }
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -30,11 +36,5 @@
     "eslint-config-google": "^0.14.0",
     "husky": "^4.2.3",
     "typescript": "^3.8.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "eslint src --ext ts",
-      "pre-push": "eslint src --ext ts"
-    }
   }
 }
