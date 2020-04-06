@@ -14,14 +14,14 @@
     "start": "node dist/index.js",
     "buildstart": "npm run build && npm run start",
     "changelint": "npx eslint --init",
-    "lint": "eslint src --ext ts",
-    "lintfix": "eslint src --ext ts --fix",
-    "test": "mocha"
+    "test:lint": "eslint src --ext ts",
+    "test:lintfix": "eslint src --ext ts --fix",
+    "test:unit": "mocha"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lintfix && npm run test",
-      "pre-push": "npm run lintfix && npm run test"
+      "pre-commit": "npm run test:lintfix && npm run test:unit",
+      "pre-push": "npm run test:lintfix && npm run test:unit"
     }
   },
   "dependencies": {
