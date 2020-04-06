@@ -2,12 +2,8 @@
   "extends": [
     "config:base"
   ],
-  "packageRules": [
-    {
-      "automerge": false,
-      "bumpVersion": null,
-      "includeForks": false,
-      "schedule": ["after 10pm and before 5am on every weekday", "every weekend"]
-    }
-  ]
+  "automerge": false,
+  "bumpVersion": null,
+  "includeForks": false,
+  "schedule": ["after 10pm and before 5am on every weekday", "every weekend"]
 }
