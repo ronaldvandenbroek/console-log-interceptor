@@ -1,5 +1,8 @@
+/* eslint no-unused-vars:
+  ["error", { "varsIgnorePattern": "http" }] */
 import express = require('express');
 import cors = require('cors');
+import http = require('http');
 
 /**
  * Callback interface used to return the intercepted log entry.
@@ -13,6 +16,8 @@ export interface IMonitorCallback {
  */
 export class LogMonitor {
   private logMonitor: express.Application;
+  public server: http.Server;
+  private callback: IMonitorCallback;
 
   /**
    * Setup the express server.
@@ -21,20 +26,21 @@ export class LogMonitor {
    * @param  {number} port
    */
   constructor(callback: IMonitorCallback, whitelist: string[], port: number) {
+    this.callback = callback;
     this.setupExpress(port);
     this.configureCORS(whitelist);
     this.mountRoutes(callback);
-    callback(`Server started on port ${port}`);
+    this.callback(`Server started on port ${port}`);
   }
 
   /**
-   * Setup the the express server.
+   * Setup the express server.
    * @param  {number} port
    */
   private setupExpress(port: number) {
     this.logMonitor = express();
     this.logMonitor.use(express.json());
-    this.logMonitor.listen(port);
+    this.server = this.logMonitor.listen(port);
   }
 
   /**
@@ -62,5 +68,13 @@ export class LogMonitor {
       callback(body);
       response.status(200).send();
     });
+  }
+
+  /**
+   * Stop the express server.
+   */
+  public stop() {
+    // this.callback('Closing server');
+    this.server.close();
   }
 }

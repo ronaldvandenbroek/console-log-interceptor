@@ -13,5 +13,11 @@ const callback: IMonitorCallback = (log: string): void => {
   console.log(log);
 };
 
+
 // Create the monitoring server.
 new LogMonitor(callback, whitelist, port);
+// const logMonitor: LogMonitor = new LogMonitor(callback, whitelist, port);
+
+// Stop the monitoring server.
+// logMonitor.stop();
+
