@@ -1,4 +1,6 @@
 # console-log-interceptor
+[![Known Vulnerabilities](https://snyk.io/test/github/ronaldvandenbroek/console-log-interceptor/badge.svg?targetFile=package.json)](https://snyk.io/test/github/ronaldvandenbroek/console-log-interceptor?targetFile=package.json)
+
 Intercept console.logs from a website and send it to a seperate logger
 
 ## inject.js
