@@ -1,7 +1,8 @@
 # console-log-interceptor
-![Node.js CI](https://github.com/ronaldvandenbroek/console-log-interceptor/workflows/Node.js%20CI/badge.svg?branch=master)
+[![Tests + Linting](https://github.com/ronaldvandenbroek/console-log-interceptor/workflows/Tests%20+%20Linting/badge.svg)](https://github.com/ronaldvandenbroek/console-log-interceptor/actions?query=workflow%3A%22Unittests+%2B+Linting%22)
 [![Known Vulnerabilities](https://snyk.io/test/github/ronaldvandenbroek/console-log-interceptor/badge.svg?targetFile=package.json)](https://snyk.io/test/github/ronaldvandenbroek/console-log-interceptor?targetFile=package.json)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fronaldvandenbroek%2Fconsole-log-interceptor.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fronaldvandenbroek%2Fconsole-log-interceptor?ref=badge_shield)
+[![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
 
 Intercept console.logs from a website and send it to a seperate logger
 

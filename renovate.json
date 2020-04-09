@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "automerge": false,
+  "bumpVersion": null,
+  "includeForks": false,
+  "schedule": ["every weekend"]
+}
