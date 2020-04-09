@@ -1,13 +1,13 @@
 {
   "name": "log-monitor",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "description": "Server side code to monitor console.log intercepts",
   "main": "index.ts",
   "author": "Ronald van den Broek",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ronaldvandenbroek/console-log-interceptor.git"
+    "url": "https://github.com/ronaldvandenbroek/console-log-interceptor.git"
   },
   "scripts": {
     "build": "tsc",
@@ -16,7 +16,8 @@
     "changelint": "npx eslint --init",
     "test:lint": "eslint src --ext ts",
     "test:lintfix": "eslint src --ext ts --fix",
-    "test:unit": "mocha"
+    "test:unit": "mocha",
+    "semantic-release": "semantic-release"
   },
   "husky": {
     "hooks": {
@@ -41,5 +42,6 @@
     "mocha": "7.1.1",
     "ts-node": "8.8.2",
     "typescript": "3.8.3"
+    "semantic-release": "17.0.4"
   }
 }
