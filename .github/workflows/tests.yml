@@ -12,7 +12,7 @@ name: Unittests + Linting
 on: [push]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
 
