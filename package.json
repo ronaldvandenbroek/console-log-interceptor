@@ -22,7 +22,13 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run test:lintfix && npm run test:unit",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
       "pre-push": "npm run test:lintfix && npm run test:unit"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   },
   "dependencies": {
@@ -36,12 +42,13 @@
     "@typescript-eslint/eslint-plugin": "2.27.0",
     "@typescript-eslint/parser": "2.27.0",
     "assert": "2.0.0",
+    "cz-conventional-changelog": "^3.1.0",
     "eslint": "6.8.0",
     "eslint-config-google": "0.14.0",
     "husky": "4.2.5",
     "mocha": "7.1.1",
+    "semantic-release": "17.0.4",
     "ts-node": "8.8.2",
-    "typescript": "3.8.3",
-    "semantic-release": "17.0.4"
+    "typescript": "3.8.3"
   }
 }
