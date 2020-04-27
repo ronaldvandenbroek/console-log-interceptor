@@ -12,6 +12,6 @@
   "bumpVersion": null,
   "includeForks": false,
   "schedule": [
-    "earlyMondays"
+    "before 3am on Monday"
   ]
 }
