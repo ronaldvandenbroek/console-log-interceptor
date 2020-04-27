@@ -2,8 +2,16 @@
   "extends": [
     "config:base"
   ],
-  "automerge": false,
+  "updateTypes": [
+    "minor",
+    "patch",
+    "pin",
+    "digest"
+  ],
+  "automerge": true,
   "bumpVersion": null,
   "includeForks": false,
-  "schedule": ["every weekend"]
+  "schedule": [
+    "earlyMondays"
+  ]
 }
