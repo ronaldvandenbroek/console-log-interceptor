@@ -2,16 +2,21 @@
   "extends": [
     "config:base"
   ],
-  "updateTypes": [
-    "minor",
-    "patch",
-    "pin",
-    "digest"
-  ],
-  "automerge": true,
-  "bumpVersion": null,
-  "includeForks": false,
-  "schedule": [
-    "before 3am on Monday"
+  "packageRules": [
+    {
+      "automerge": true,
+      "schedule": [
+        "before 3am on Monday"
+      ],
+      "semanticCommits": true,
+      "semanicCommitScope": "dependency",
+      "semanticCommitType": "chore",
+      "updateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ]
+    }
   ]
 }
